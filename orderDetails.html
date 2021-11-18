@@ -12,6 +12,69 @@
 
     <h1>Order Details</h1>
 
+    <div>
+        <a href="./index.html">Return to Home</a>
+    </div>
+
+    <!-- Add order detail section. This is going to be a POST method to the db. -->
+    <h3>Add Order Detail</h3>
+    <form action="">
+        <!-- Order ID -->
+        <div>
+            <label for="orderID">Order ID: </label>
+            <input type="text" id="orderID">
+        </div>
+
+        <!-- Product ID -->
+        <div>
+            <label for="productID">Product ID: </label>
+            <input type="text" id="productID">
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Add product</button>
+        </div>
+    </form>
+
+
+    <!-- Search/Filter Order Details -->
+    <form action="">
+        <h3>Filter/Search Order Detail</h3>
+
+        <div>
+            <label for="searchProductID">Product ID: </label>
+            <input type="text" id="searchProductID">
+
+            <label for="searchOrderID">Order ID: </label>
+            <input type="text" id="searchOrderID">
+
+            <button>Search</button>
+        </div>
+    </form>
+
+    <!-- View Existing Order Details -->
+    <h3>Existing Order Details</h3>
+    <table>
+        <thead>
+            <th>Order ID</th>
+            <th>Product ID</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
