@@ -12,6 +12,55 @@
 
     <h1>Reviews</h1>
 
+    <div>
+        <a href="./index.html">Return to Home</a>
+    </div>
+
+    <!-- Add review section. This is going to be a POST method to the db. -->
+    <h3>Add Review</h3>
+    <form action="">
+        <!-- Customer ID -->
+        <div>
+            <label for="customerID">Customer ID: </label>
+            <input type="text" id="customerID" name="customerID">
+        </div>
+
+        <!-- Product ID -->
+        <div>
+            <label for="productID">Product ID: </label>
+            <input type="text" id="productID" name="productID">
+        </div>
+
+        <!-- Rating -->
+        <div>
+            <label for="rating">Rating:</label>
+            <select name="rating" id="rating">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+        </div>
+
+        <!-- Review Text -->
+        <div>
+            <label for="reviewText"></label>
+            <textarea name="reviewText" id="reviewText" cols="30" rows="10"></textarea>
+        </div>
+
+        <!-- Date Written -->
+        <div>
+            <label for="dateWritten"></label>
+            <input name="dateWritten" id="dateWritten" type="datetime-local">
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Add review</button>
+        </div>
+    </form>
+
 </body>
 
 </html>
