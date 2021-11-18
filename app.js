@@ -17,13 +17,18 @@ app.get('/', function (req, res) {
 
     // DROP TABLE...
     db.pool.query(query1, function (err, results, fields) {
+        console.log(err);
         // CREATE TABLE...
         db.pool.query(query2, function (err, results, fields) {
+            console.log(err);
             // INSERT INTO...
             db.pool.query(query3, function (err, results, fields) {
+                console.log(err);
                 // SELECT *...
                 db.pool.query(query4, function (err, results, fields) {
+                    console.log(err);
                     // Send the results to the browser.
+                    console.log(results);
                     let base = "<h1>MySQL Results:</h1>";
                     res.send(base + JSON.stringify(results));
                 });
