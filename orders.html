@@ -12,6 +12,89 @@
 
     <h1>Orders</h1>
 
+    <div>
+        <a href="./index.html">Return to Home</a>
+    </div>
+
+    <!-- Add order section. This is going to be a POST method to the db. -->
+    <h3>Add Order</h3>
+    <form action="">
+        <!-- Customer ID -->
+        <div>
+            <label for="customerID">Customer ID: </label>
+            <input type="text" id="customerID" name="customerID">
+        </div>
+
+        <!-- Date Purchased -->
+        <div>
+            <label for="datePurchased">Date Purchased: </label>
+            <input type="date" id="datePurchased">
+        </div>
+
+        <!-- Pickup/Delivery Option -->
+        <div>
+            <label for="pickupDelivery">Pickup/Delivery: </label>
+            <select name="pickupDelivery" id="pickupDelivery">
+                <option value="">-- Please choose an option --</option>
+                <option value="1">Pickup</option>
+                <option value="0">Delivery</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Add order</button>
+        </div>
+    </form>
+
+    <!-- Search/Filter Orders -->
+    <form action="">
+        <h3>Filter/Search Order</h3>
+
+        <div>
+            <label for="searchOrderID">Order ID: </label>
+            <input type="text" id="searchOrderID">
+
+            <label for="searchCustomerID">Customer ID: </label>
+            <input type="text" id="searchCustomerID">
+
+            <label for="searchDatePublished">Date Purchased: </label>
+            <input type="date" id="searchDatePublished">
+
+            <button>Search</button>
+        </div>
+    </form>
+
+
+    <!-- View Existing Orders -->
+    <h3>Existing Orders</h3>
+    <table>
+        <thead>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Date Purchased</th>
+            <th>Pickup/Delivery</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>2021-04-21</td>
+                <td>1</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>2021-06-22</td>
+                <td>0</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 
 </html>
