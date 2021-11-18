@@ -61,6 +61,67 @@
         </div>
     </form>
 
+
+
+
+
+
+    <!-- Search/Filter Reviews -->
+    <form action="">
+        <h3>Filter/Search Review</h3>
+
+        <div>
+            <label for="searchProductID">Product ID: </label>
+            <input type="text" id="searchProductID">
+
+            <label for="searchRating">Rating:</label>
+            <select name="searchRating" id="searchRating">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+
+            <button>Search</button>
+        </div>
+    </form>
+
+    <!-- View Existing Reviews -->
+    <h3>Existing Reviews</h3>
+    <table>
+        <thead>
+            <th>Review ID</th>
+            <th>Customer ID</th>
+            <th>Product ID</th>
+            <th>Rating</th>
+            <th>Review</th>
+            <th>Date Written</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>2</td>
+                <td>5</td>
+                <td>The game was awesome!</td>
+                <td>2021-04-21</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>5</td>
+                <td>The game was meh...</td>
+                <td>2021-04-29</td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 
 </html>
