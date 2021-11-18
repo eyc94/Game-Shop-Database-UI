@@ -3,6 +3,9 @@ var app = express();                        // We need to instantiate an express
 PORT = 20301;                               // Set a port number at the top so it's easy to change in the future.
 
 
+// Database connection.
+var db = require('./database/db-connector');
+
 app.get('/', function (req, res) {          // Basic syntax for a route.
     res.send("The server is running!");     // This function sends the string "The server is running!" to the computer requesting the web site.
 });
