@@ -14,6 +14,15 @@ CREATE TABLE customer (
     PRIMARY KEY (customerID)
 );
 
+-- Product
+CREATE TABLE product (
+    productID INT(11) AUTO_INCREMENT NOT NULL,
+    productName VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    publisher VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL
+    PRIMARY KEY (productID)
+);
 
 
 -- Part (b)
