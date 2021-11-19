@@ -10,6 +10,7 @@ CREATE TABLE customers (
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
+    phoneNumber VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     PRIMARY KEY (customerID)
 );
@@ -60,13 +61,13 @@ CREATE TABLE orderDetails (
 -- Part (b)
 -- Sample Data
 
-INSERT INTO customers (firstName, lastName, email, address)
+INSERT INTO customers (firstName, lastName, email, phoneNumber, address)
 VALUES
-("Michael", "Scott", "sample@gmail.com", "123 Main St."),
-("Jim", "Halpert", "sample@yahoo.com", "3421 Second St."),
-("Pam", "Beesley", "test@hotmail.com", "3129 Circle Dr."),
-("Dwight", "Scrute", "j.smith@sample.com", "321 Sample Ct."),
-("Creed", "Bratton", "c.bratton@gmail.com", "3634 Third St");
+("Michael", "Scott", "sample@gmail.com", "1234567890", "123 Main St."),
+("Jim", "Halpert", "sample@yahoo.com", "3820382198", "3421 Second St."),
+("Pam", "Beesley", "test@hotmail.com", "3929310349", "3129 Circle Dr."),
+("Dwight", "Scrute", "j.smith@sample.com", "4859307765", "321 Sample Ct."),
+("Creed", "Bratton", "c.bratton@gmail.com", "1029574039", "3634 Third St");
 
 INSERT INTO products (productName, price, publisher, genre)
 VALUES
