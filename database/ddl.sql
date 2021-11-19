@@ -24,6 +24,19 @@ CREATE TABLE product (
     PRIMARY KEY (productID)
 );
 
+-- Review
+CREATE TABLE review (
+    reviewID INT(11) AUTO_INCREMENT NOT NULL,
+    customerID INT(11) NOT NULL,
+    productID INT(11) NOT NULL,
+    rating VARCHAR(255) NOT NULL,
+    text VARCHAR(255) NOT NULL,
+    dateWritten DATE NOT NULL,
+    PRIMARY KEY (reviewID),
+    FOREIGN KEY (customerID) REFERENCES customer(customerID),
+    FOREIGN KEY (productID) REFERENCES product(productID)
+)
+
 
 -- Part (b)
 -- Sample Data
