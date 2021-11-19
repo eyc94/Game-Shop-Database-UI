@@ -4,7 +4,7 @@
 -- Part (a)
 -- Data Definition Queries
 
--- Customer
+-- Customers
 CREATE TABLE customers (
     customerID INT(11) AUTO_INCREMENT NOT NULL,
     firstName VARCHAR(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE customers (
     PRIMARY KEY (customerID)
 );
 
--- Product
+-- Products
 CREATE TABLE products (
     productID INT(11) AUTO_INCREMENT NOT NULL,
     productName VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE products (
     PRIMARY KEY (productID)
 );
 
--- Review
+-- Reviews
 CREATE TABLE reviews (
     reviewID INT(11) AUTO_INCREMENT NOT NULL,
     customerID INT(11),
@@ -37,7 +37,7 @@ CREATE TABLE reviews (
     FOREIGN KEY (productID) REFERENCES products(productID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- Order
+-- Orders
 CREATE TABLE orders (
     orderID INT(11) AUTO_INCREMENT NOT NULL,
     customerID INT(11),
@@ -46,6 +46,15 @@ CREATE TABLE orders (
     FOREIGN KEY (customerID) REFERENCES customers(customerID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
+-- Order Details
+CREATE TABLE orderDetails (
+    orderID INT(11),
+    productID INT(11),
+    quantity INT(11),
+    PRIMARY KEY (orderID, productID),
+    FOREIGN KEY (orderID) REFERENCES orders(orderID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES products(productID) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 -- Part (b)
 -- Sample Data
