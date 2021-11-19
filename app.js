@@ -1,12 +1,12 @@
 var express = require('express');           // We are using the express library for the web server.
+// Import express-handlebars and default layout uses main.handlebars.
+var handlebars = require('express-handlebars').create({ defaultLayout: 'main' });
 var app = express();                        // We need to instantiate an express object to interact with the server in our code.
 PORT = 20301;                               // Set a port number at the top so it's easy to change in the future.
 
-var exphbs = require('express-handlebars')  // Import express-handlebars.
-app.engine('.hbs', exphbs({                 // Create an instance of the handlebars engine to process templates.
-    extname: ".hbs"
-}));
-app.set('view engine', '.hbs');             // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+
+app.engine('handlebars', handlebars.engine);    // handlebars.engine handles any files with a .handlebars extension.
+app.set('view engine', 'handlebars');           // Allows us to omit .handlebars extension.
 
 
 // Database connection.
@@ -14,7 +14,10 @@ var db = require('./database/db-connector');
 
 app.get('/', function (req, res) {
 
+    // Note the call to render() and not send(). Using render() ensures the templating engine
+    // will process this file, before sending the finished HTML to the client.
     res.render('index');
+
 
     // // Define our queries.
     // query1 = 'DROP TABLE IF EXISTS diagnostic;';
