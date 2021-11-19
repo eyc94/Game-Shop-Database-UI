@@ -2,6 +2,12 @@ var express = require('express');           // We are using the express library 
 var app = express();                        // We need to instantiate an express object to interact with the server in our code.
 PORT = 20301;                               // Set a port number at the top so it's easy to change in the future.
 
+var exphbs = require('express-handlebars')  // Import express-handlebars.
+app.engine('.hbs', exphbs({                 // Create an instance of the handlebars engine to process templates.
+    extname: ".hbs"
+}));
+app.set('view engine', '.hbs');             // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+
 
 // Database connection.
 var db = require('./database/db-connector');
