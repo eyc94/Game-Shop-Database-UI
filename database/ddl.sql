@@ -31,7 +31,7 @@ CREATE TABLE reviews (
     customerID INT(11),
     productID INT(11),
     rating VARCHAR(255) NOT NULL,
-    text VARCHAR(255) NOT NULL,
+    reviewText VARCHAR(255) NOT NULL,
     dateWritten DATE NOT NULL,
     PRIMARY KEY (reviewID),
     FOREIGN KEY (customerID) REFERENCES customers(customerID) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -79,7 +79,7 @@ VALUES
 ("Forza Horizon 5", 59.99, "Playground Games", "Racing"),
 ("Cyberpunk 2077", 59.99, "CD Projekt", "Role-Playing Game");
 
-INSERT INTO reviews (customerID, productID, rating, text, dateWritten)
+INSERT INTO reviews (customerID, productID, rating, reviewText, dateWritten)
 VALUES
 (1, 1, "5", "This game makes me feel like Michael Scarn!", "2020-06-02"),
 (1, 2, "3", "Makes me feel more like a US agent!", "2019-04-21"),
