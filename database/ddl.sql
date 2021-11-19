@@ -27,14 +27,19 @@ CREATE TABLE product (
 -- Review
 CREATE TABLE review (
     reviewID INT(11) AUTO_INCREMENT NOT NULL,
-    customerID INT(11) NOT NULL,
-    productID INT(11) NOT NULL,
+    customerID INT(11),
+    productID INT(11),
     rating VARCHAR(255) NOT NULL,
     text VARCHAR(255) NOT NULL,
     dateWritten DATE NOT NULL,
     PRIMARY KEY (reviewID),
-    FOREIGN KEY (customerID) REFERENCES customer(customerID),
-    FOREIGN KEY (productID) REFERENCES product(productID)
+    FOREIGN KEY (customerID) REFERENCES customer(customerID) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (productID) REFERENCES product(productID) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- Order
+CREATE TABLE order (
+
 )
 
 
