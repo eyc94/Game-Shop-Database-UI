@@ -164,3 +164,37 @@ WHERE orderID = :orderIDInput;
 -- We will delete by ID.
 DELETE FROM orders
 WHERE orderID = :orderIDInput;
+
+
+
+-- Order Details
+-- =====================================
+
+-- Add a new order detail.
+INSERT INTO orderDetails (orderID, productID, quantity)
+VALUES
+(:orderIDInput, :productIDInput, :quantityInput);
+
+-- Display all order details.
+SELECT * FROM orderDetails;
+
+-- Search for an order detail.
+-- Search by orderID.
+SELECT * FROM orderDetails WHERE orderID = :orderIDInput;
+
+-- Search by productID.
+SELECT * FROM orderDetails WHERE productID = :productIDInput;
+
+-- Search by quantity.
+SELECT * FROM orderDetails WHERE quantity = :quantityInput;
+
+-- Update an order detail.
+-- Update the order detail's orderID, productID, or quantity.
+UPDATE orderDetails
+SET quantity = :quantityInput
+WHERE orderID = :orderIDInput AND productIDInput = :productIDInput;
+
+-- Delete an order detail.
+-- Delete by order detail ID which is the orderID and productID.
+DELETE FROM orderDetails
+WHERE orderID = :orderIDInput AND productID = :productIDInput;
