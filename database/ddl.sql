@@ -20,7 +20,7 @@ CREATE TABLE products (
     productName VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     publisher VARCHAR(255) NOT NULL,
-    genre VARCHAR(255) NOT NULL
+    genre VARCHAR(255) NOT NULL,
     PRIMARY KEY (productID)
 );
 
