@@ -85,3 +85,41 @@ WHERE productID = :productIDInput;
 -- We will delete a product by its ID.
 DELETE FROM products
 WHERE productID = :productIDInput;
+
+-- Reviews
+-- =====================================
+
+-- Add a new review.
+INSERT INTO reviews (customerID, productID, rating, reviewText, dateWritten)
+VALUES
+(:customerIDInput, :productIDInput, :ratingInput, :reviewTextInput, :dateWrittenInput);
+
+-- Display all reviews.
+SELECT * FROM reviews;
+
+-- Search for reviews.
+-- Search by review ID.
+SELECT * FROM reviews WHERE reviewID = :reviewIDInput;
+
+-- Search by customer ID.
+SELECT * FROM reviews WHERE customerID = :customerIDInput;
+
+-- Search by product ID.
+SELECT * FROM reviews WHERE productID = :productIDInput;
+
+-- Search by rating.
+SELECT * FROM reviews WHERE rating = :ratingInput;
+
+-- Search by date.
+SELECT * FROM reviews WHERE dateWritten = :dateWrittenInput;
+
+-- Update a review.
+-- Update the review's customerID, productID, rating, or dateWritten.
+UPDATE reviews
+SET customerID = :customerIDInput, productID = :productIDInput, rating = :ratingInput, dateWritten = :dateWrittenInput;
+WHERE reviewID = :reviewIDInput;
+
+-- Delete a review.
+-- We will delete a review by its ID.
+DELETE FROM reviews
+WHERE reviewID = :reviewIDInput;
