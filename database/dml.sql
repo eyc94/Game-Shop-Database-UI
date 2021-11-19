@@ -6,6 +6,7 @@
 -- data from back-end programming language.
 
 
+
 -- Customers
 -- =====================================
 
@@ -48,6 +49,7 @@ DELETE FROM customers
 WHERE customerID = :customerIDInput;
 
 
+
 -- Products
 -- =====================================
 
@@ -86,6 +88,8 @@ WHERE productID = :productIDInput;
 DELETE FROM products
 WHERE productID = :productIDInput;
 
+
+
 -- Reviews
 -- =====================================
 
@@ -123,3 +127,40 @@ WHERE reviewID = :reviewIDInput;
 -- We will delete a review by its ID.
 DELETE FROM reviews
 WHERE reviewID = :reviewIDInput;
+
+
+
+-- Orders
+-- =====================================
+
+-- Add a new order.
+INSERT INTO orders (customerID, orderDate, pickup)
+VALUES
+(:customerIDInput, :orderDateInput, :pickupInput);
+
+-- Display all orders.
+SELECT * FROM orders;
+
+-- Search for an order.
+-- Search by orderID.
+SELECT * FROM orders WHERE orderID = :orderIDInput;
+
+-- Search by customerID.
+SELECT * FROM orders WHERE customerID = :customerIDInput;
+
+-- Search by orderDate.
+SELECT * FROM orders WHERE orderDate = :orderDateInput;
+
+-- Search by pickup option.
+SELECT * FROM orders WHERE pickup = :pickupInput;
+
+-- Update an order.
+-- Update the customerID, orderDate, or pickup option.
+UPDATE orders
+SET customerID = :customerIDInput, orderDate = :orderDateInput, pickup = :pickupInput;
+WHERE orderID = :orderIDInput;
+
+-- Delete an order.
+-- We will delete by ID.
+DELETE FROM orders
+WHERE orderID = :orderIDInput;
