@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.engine('handlebars', handlebars.engine);    // handlebars.engine handles any files with a .handlebars extension.
 app.set('view engine', 'handlebars');           // Allows us to omit .handlebars extension.
 
-
 // Database connection.
 var db = require('./database/db-connector');
 
@@ -50,7 +49,6 @@ app.post('/addCustomer', function (req, res) {
         }
     });
 });
-
 
 app.listen(PORT, function () {              // This is the basic syntax for the "listener" which receives incoming requests on the specified PORT.
     console.log("Express started on http://localhost:" + PORT + "; press Ctrl-C to terminate.");
