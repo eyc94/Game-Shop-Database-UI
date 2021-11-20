@@ -14,9 +14,15 @@ var db = require('./database/db-connector');
 
 app.get('/', function (req, res) {
 
+    let query1 = "SELECT * FROM customers;";
+
+    db.pool.query(query1, function (error, rows, fields) {
+        res.render('customers', { data: rows });
+    });
+
     // Note the call to render() and not send(). Using render() ensures the templating engine
     // will process this file, before sending the finished HTML to the client.
-    res.render('index');
+    // res.render('index');
 
 
     // // Define our queries.
