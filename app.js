@@ -22,40 +22,6 @@ app.get('/', function (req, res) {
     db.pool.query(query1, function (error, rows, fields) {
         res.render('customers', { data: rows });
     });
-
-    // Note the call to render() and not send(). Using render() ensures the templating engine
-    // will process this file, before sending the finished HTML to the client.
-    // res.render('index');
-
-
-    // // Define our queries.
-    // query1 = 'DROP TABLE IF EXISTS diagnostic;';
-    // query2 = 'CREATE TABLE diagnostic(id INT PRIMARY KEY AUTO_INCREMENT, text VARCHAR(255) NOT NULL);';
-    // query3 = 'INSERT INTO diagnostic (text) VALUES ("MySQL is working!");';
-    // query4 = 'SELECT * FROM diagnostic;';
-
-    // // Execute every query in an asynchronous manner, we want each query to finish before the next one starts.
-
-    // // DROP TABLE...
-    // db.pool.query(query1, function (err, results, fields) {
-    //     console.log(err);
-    //     // CREATE TABLE...
-    //     db.pool.query(query2, function (err, results, fields) {
-    //         console.log(err);
-    //         // INSERT INTO...
-    //         db.pool.query(query3, function (err, results, fields) {
-    //             console.log(err);
-    //             // SELECT *...
-    //             db.pool.query(query4, function (err, results, fields) {
-    //                 console.log(err);
-    //                 // Send the results to the browser.
-    //                 console.log(results);
-    //                 let base = "<h1>MySQL Results:</h1>";
-    //                 res.send(base + JSON.stringify(results));
-    //             });
-    //         });
-    //     });
-    // });
 });
 
 
