@@ -24,6 +24,23 @@ app.get('/', function (req, res) {
     });
 });
 
+app.post('/addCustomer', function (req, res) {
+    // Capture incoming data and parse it back to a JS object.
+    let data = req.body;
+
+    let query1 = "INSERT INTO customers (firstName, lastName, email, phoneNumber, address) VALUES (?, ?, ?, ?, ?);";
+    let inserts = [req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.address];
+
+    db.pool.query(query1, inserts, function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/');
+        }
+    });
+});
+
 
 app.listen(PORT, function () {              // This is the basic syntax for the "listener" which receives incoming requests on the specified PORT.
     console.log("Express started on http://localhost:" + PORT + "; press Ctrl-C to terminate.");
