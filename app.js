@@ -15,8 +15,9 @@ app.set('view engine', 'handlebars');           // Allows us to omit .handlebars
 // Database connection.
 var db = require('./database/db-connector');
 
-app.get('/', function (req, res) {
 
+// GET route for our root. Just display all customers.
+app.get('/', function (req, res) {
     let query1 = "SELECT * FROM customers;";
 
     db.pool.query(query1, function (error, rows, fields) {
@@ -24,18 +25,27 @@ app.get('/', function (req, res) {
     });
 });
 
+// POST route to handle adding customers.
 app.post('/addCustomer', function (req, res) {
     // Capture incoming data and parse it back to a JS object.
     let data = req.body;
 
+    // Create a query with allowed user input.
     let query1 = "INSERT INTO customers (firstName, lastName, email, phoneNumber, address) VALUES (?, ?, ?, ?, ?);";
+    // User input is stored here to put into query to replace '?'.
     let inserts = [req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.address];
 
+    // Call the query with the user inputs.
     db.pool.query(query1, inserts, function (error, rows, fields) {
+        // Check to see if there was an error.
         if (error) {
+            // Log error to the terminal so we know what went wrong.
+            // Send visitor an HTTP response 400 indicating bad request.
             console.log(error);
             res.sendStatus(400);
         } else {
+            // If there was no error, we redirect back to root.
+            // This will automatically run the SELECT query to view all customers.
             res.redirect('/');
         }
     });
