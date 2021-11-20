@@ -32,21 +32,14 @@ app.use(express.urlencoded({ extended: true }));
 // Database connection.
 var db = require('./database/db-connector');
 
-// Router
-app.get('', (req, res) => {
-    res.render('home');
-})
+
+
+const routes = require('./server/routes/customer');
+app.use('/customers', routes);
 
 
 
-// GET route for our root. Just display all customers.
-app.get('/customers', function (req, res) {
-    let query1 = "SELECT * FROM customers;";
 
-    db.pool.query(query1, function (error, rows, fields) {
-        res.render('customers', { data: rows });
-    });
-});
 
 // POST route to handle adding customers.
 app.post('/addCustomer', function (req, res) {
