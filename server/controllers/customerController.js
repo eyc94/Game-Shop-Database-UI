@@ -9,3 +9,20 @@ exports.view = (req, res) => {
         res.render('customers', { data: rows });
     });
 };
+
+// Delete Customer.
+exports.delete = (req, res) => {
+    let deleteQuery = `DELETE FROM customers WHERE customerID = ?;`;
+    let inserts = [req.params.id];
+
+    db.pool.query(deleteQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.write(JSON.stringify(error));
+            res.status(400);
+            res.end();
+        } else {
+            res.redirect('/customers');
+        }
+    });
+};
