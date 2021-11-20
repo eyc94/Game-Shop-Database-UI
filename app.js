@@ -29,14 +29,18 @@ app.set('view engine', '.hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
 // Database connection.
 var db = require('./database/db-connector');
 
+// Router
+app.get('', (req, res) => {
+    res.render('home');
+})
+
+
 
 // GET route for our root. Just display all customers.
-app.get('/', function (req, res) {
+app.get('/customers', function (req, res) {
     let query1 = "SELECT * FROM customers;";
 
     db.pool.query(query1, function (error, rows, fields) {
