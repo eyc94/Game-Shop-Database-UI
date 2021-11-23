@@ -9,7 +9,7 @@ exports.view = (req, res) => {
     db.pool.query(selectQuery, (errors, rows, fields) => {
         const obj = { data: rows };
         res.render('products', obj);
-    })
+    });
 };
 
 // This is the CREATE functionality on the products table.
