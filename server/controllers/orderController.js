@@ -40,3 +40,18 @@ exports.delete = (req, res) => {
         }
     });
 };
+
+exports.edit = (req, res) => {
+    const selectQuery = `SELECT * FROM orders WHERE orderID = ?;`;
+    inserts = [req.params.id];
+
+    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            const obj = { rows };
+            res.render('editOrder', obj);
+        }
+    });
+};

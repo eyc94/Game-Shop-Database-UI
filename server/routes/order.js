@@ -11,4 +11,7 @@ router.get('/', orderController.view);
 // Delete.
 router.get('/:id', orderController.delete);
 
+// Edit and Update
+router.get('/editOrder/:id', orderController.edit);
+
 module.exports = router;
