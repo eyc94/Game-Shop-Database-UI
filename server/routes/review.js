@@ -13,5 +13,6 @@ router.get('/:id', reviewController.delete);
 
 // Edit and Update.
 router.get('/editReview/:id', reviewController.edit);
+router.post('/editReview/:id', reviewController.update);
 
 module.exports = router;

@@ -58,3 +58,18 @@ exports.edit = (req, res) => {
         }
     });
 };
+
+exports.update = (req, res) => {
+    const { customerID, productID, rating, reviewText, dateWritten } = req.body;
+    const updateQuery = `UPDATE reviews SET customerID = ?, productID = ?, rating = ?, reviewText = ?, dateWritten = ? WHERE reviewID = ?`;
+    const inserts = [customerID, productID, rating, reviewText, dateWritten, req.params.id];
+
+    db.pool.query(updateQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/reviews');
+        }
+    });
+};
