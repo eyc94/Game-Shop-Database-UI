@@ -1,0 +1,8 @@
+<h3>Edit Order</h3>
+
+{{!-- Creates a form for each value in rows which is just 1 for the order. --}}
+{{#each rows}}
+<form id="editOrderForm" method="POST" action="/orders/editOrder/{{this.orderID}}">
+    {{> orderForm}}
+</form>
+{{/each}}
