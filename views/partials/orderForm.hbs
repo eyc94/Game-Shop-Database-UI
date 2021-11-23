@@ -1,0 +1,26 @@
+<!-- Customer ID -->
+<div>
+    <label for="customerID">Customer ID: </label>
+    <input type="text" id="customerID" name="customerID" value={{this.customerID}}>
+</div>
+
+<!-- Order Date -->
+<div>
+    <label for="orderDate">Order Date: </label>
+    <input type="date" id="orderDate" name="orderDate" value={{this.orderDate}}>
+</div>
+
+<!-- Pickup -->
+<div>
+    <label for="pickup">Pickup/Delivery: </label>
+    <select name="pickup" id="pickup" value={{this.pickup}}>
+        <option value="">-- Please choose an option --</option>
+        <option value="1">Pickup</option>
+        <option value="0">Delivery</option>
+    </select>
+</div>
+
+<!-- Submit Button -->
+<div>
+    <button type="submit">Submit</button>
+</div>
