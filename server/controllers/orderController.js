@@ -5,7 +5,7 @@ exports.view = (req, res) => {
     const selectQuery = `SELECT * FROM orders;`;
 
     db.pool.query(selectQuery, (error, rows, fields) => {
-        const obs = { data: rows };
+        const obj = { data: rows };
         res.render('orders', obj);
     });
 };
