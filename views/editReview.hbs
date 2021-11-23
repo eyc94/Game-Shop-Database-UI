@@ -2,7 +2,7 @@
 
 {{!-- Creates a form for each value in rows which is just 1 for the order. --}}
 {{#each rows}}
-<form id="editReviewForm" method="POST" action="/orders/editReview/{{this.reviewID}}">
+<form id="editReviewForm" method="POST" action="/reviews/editReview/{{this.reviewID}}">
     {{> reviewForm}}
 </form>
 {{/each}}
