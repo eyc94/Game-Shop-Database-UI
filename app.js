@@ -32,8 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 // Database connection.
 var db = require('./database/db-connector');
 
-const routes = require('./server/routes/customer');
-app.use('/customers', routes);
+const homeRoute = require('./server/routes/home');
+const customerRoute = require('./server/routes/customer');
+app.use('/customers', customerRoute);
 
 app.listen(PORT, function () {              // This is the basic syntax for the "listener" which receives incoming requests on the specified PORT.
     console.log("Express started on http://localhost:" + PORT + "; press Ctrl-C to terminate.");
