@@ -9,4 +9,10 @@ router.get('/:id', customerController.delete);
 
 router.post('/addCustomer', customerController.create);
 
+
+
+
+router.get('/editCustomer/:id', customerController.edit);
+router.post('/editCustomer/:id', customerController.update);
+
 module.exports = router;

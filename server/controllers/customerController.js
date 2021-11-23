@@ -47,3 +47,49 @@ exports.create = (req, res) => {
         }
     });
 };
+
+
+// Edit Customer.
+exports.edit = (req, res) => {
+    let selectQuery = `SELECT * FROM customers WHERE customerID = ?;`;
+    let inserts = [req.params.id];
+
+    // Call the query with the user inputs.
+    db.pool.query(selectQuery, inserts, function (error, rows, fields) {
+        // Check to see if there was an error.
+        if (error) {
+            // Log error to the terminal so we know what went wrong.
+            // Send visitor an HTTP response 400 indicating bad request.
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            console.log('hi');
+            // If there was no error, we redirect back to root.
+            // This will automatically run the SELECT query to view all customers.
+            console.log(rows);
+            res.render('editCustomer', { rows });
+        }
+    });
+};
+
+// Update Customer.
+exports.update = (req, res) => {
+    const { firstName, lastName, email, phoneNumber, address } = req.body;
+    let updateQuery = `UPDATE customers 
+    SET firstName = ?, lastName = ?, email = ?, phoneNumber = ?, address = ?
+    WHERE customerID = ?;`;
+    let inserts = [firstName, lastName, email, phoneNumber, address, req.params.id];
+
+    // Call the query with the user inputs.
+    db.pool.query(updateQuery, inserts, function (error, rows, fields) {
+        // Check to see if there was an error.
+        if (error) {
+            // Log error to the terminal so we know what went wrong.
+            // Send visitor an HTTP response 400 indicating bad request.
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/customers');
+        }
+    });
+};
