@@ -40,6 +40,10 @@ app.use('/', homeRoute);
 const customerRoute = require('./server/routes/customer');
 app.use('/customers', customerRoute);
 
+// Product route.
+const productRoute = require('./server/routes/product');
+app.use('/products', productRoute);
+
 // App listener.
 app.listen(PORT, function () {
     console.log("Express started on http://localhost:" + PORT + "; press Ctrl-C to terminate.");
