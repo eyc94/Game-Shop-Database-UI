@@ -39,3 +39,35 @@ exports.delete = (req, res) => {
         }
     });
 };
+
+exports.edit = (req, res) => {
+    let selectQuery = `SELECT * FROM products WHERE productID = ?;`;
+    let inserts = [req.params.id];
+
+    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            let obj = { rows };
+            res.render('editProduct', obj);
+        }
+    });
+};
+
+exports.update = (req, res) => {
+    const { productName, price, publisher, genre } = req.body;
+    let updateQuery = `UPDATE products
+    SET productName = ?, price = ?, publisher = ?, genre = ?
+    WHERE productID = ?;`;
+    let inserts = [productName, price, publisher, genre, req.params.id];
+
+    db.pool.query(updateQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/products');
+        }
+    });
+};

@@ -64,7 +64,6 @@ exports.edit = (req, res) => {
         } else {
             // Render the editCustomer.hbs page with the input passed as an object.
             let obj = { rows };
-            console.log(obj);
             res.render('editCustomer', obj);
         }
     });
