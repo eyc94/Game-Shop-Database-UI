@@ -1,0 +1,9 @@
+{{!-- Form to edit an existing order detail --}}
+<h3>Edit Order Detail</h3>
+
+{{!-- Create a form for each row. In this case, we will have just 1. --}}
+{{#each rows}}
+<form id="editOrderDetailForm" method="POST" action="/customers/editOrderDetail/{{this.orderID}}{{this.productID}}">
+    {{> orderDetailForm}}
+</form>
+{{/each}}
