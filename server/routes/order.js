@@ -8,4 +8,7 @@ router.post('/addOrder', orderController.create);
 // Read.
 router.get('/', orderController.view);
 
+// Delete.
+router.get('/:id', orderController.delete);
+
 module.exports = router;

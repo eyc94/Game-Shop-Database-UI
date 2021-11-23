@@ -24,3 +24,19 @@ exports.create = (req, res) => {
         }
     });
 };
+
+exports.delete = (req, res) => {
+    const deleteQuery = `DELETE FROM orders WHERE orderID = ?;`;
+    const inserts = [req.params.id];
+
+    db.pool.query(deleteQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.write(JSON.stringify(error));
+            res.status(400);
+            res.end();
+        } else {
+            res.redirect('/orders');
+        }
+    });
+};
