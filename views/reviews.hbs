@@ -1,0 +1,46 @@
+<h1>Reviews</h1>
+
+<div>
+    <a href="/">Home</a>
+</div>
+
+<h3>Add Review</h3>
+
+{{!-- Form to add reviews --}}
+<form id="addReviewForm" method="POST" action="/reviews/addOrder">
+    {{> reviewForm}}
+</form>
+
+<h3>Existing Reviews</h3>
+
+{{!-- Create a table --}}
+<table>
+    {{!-- Table header section --}}
+    <thead>
+        {{!-- First row has the key printed of each object as a header cell. --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Table body section --}}
+    <tbody>
+        {{!-- Print the reviewID, customerID, productID, rating, reviewText, dateWritten --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.reviewID}}</td>
+            <td>{{this.customerID}}</td>
+            <td>{{this.productID}}</td>
+            <td>{{this.rating}}</td>
+            <td>{{this.reviewText}}</td>
+            <td>{{this.dateWritten}}</td>
+            <td><a href="/reviews/editReview/{{this.reviewID}}">Update</a></td>
+            <td><a href="/reviews/{{this.reviewID}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
