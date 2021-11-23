@@ -1,0 +1,7 @@
+{{!-- Form to edit an existing customer --}}
+<h3>Edit Customer</h3>
+{{#each rows}}
+<form id="editCustomerForm" method="POST" action="/customers/editCustomer/{{this.customerID}}">
+    {{> customerForm}}
+</form>
+{{/each}}
