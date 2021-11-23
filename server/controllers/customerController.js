@@ -31,7 +31,6 @@ exports.delete = (req, res) => {
 exports.create = (req, res) => {
     let createQuery = `INSERT INTO customers (firstName, lastName, email, phoneNumber, address) VALUES (?, ?, ?, ?, ?);`;
     let inserts = [req.body.firstName, req.body.lastName, req.body.email, req.body.phoneNumber, req.body.address];
-
     // Call the query with the user inputs.
     db.pool.query(createQuery, inserts, function (error, rows, fields) {
         // Check to see if there was an error.

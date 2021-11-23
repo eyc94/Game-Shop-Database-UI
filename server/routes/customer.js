@@ -7,6 +7,8 @@ router.get('/', customerController.view);
 
 router.get('/:id', customerController.delete);
 
+
+// Create a customer.
 router.post('/addCustomer', customerController.create);
 
 
