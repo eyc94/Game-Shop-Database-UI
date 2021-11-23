@@ -1,0 +1,40 @@
+<!-- Customer ID -->
+<div>
+    <label for="customerID">Customer ID: </label>
+    <input type="text" id="customerID" name="customerID" value={{this.customerID}}>
+</div>
+
+<!-- Product ID -->
+<div>
+    <label for="productID">Product ID: </label>
+    <input type="text" id="productID" name="productID" value={{this.productID}}>
+</div>
+
+<!-- Rating -->
+<div>
+    <label for="rating">Rating:</label>
+    <select name="rating" id="rating" value={{this.rating}}>
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select>
+</div>
+
+<!-- Review Text -->
+<div>
+    <label for="reviewText"></label>
+    <textarea name="reviewText" id="reviewText" cols="30" rows="10"></textarea>
+</div>
+
+<!-- Date Written -->
+<div>
+    <label for="dateWritten"></label>
+    <input name="dateWritten" id="dateWritten" type="datetime-local" value={{this.dateWritten}}>
+</div>
+
+<!-- Submit Button -->
+<div>
+    <button type="submit">Submit</button>
+</div>
