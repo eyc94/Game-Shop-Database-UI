@@ -1,4 +1,3 @@
-const mysql = require('mysql');
 const db = require('../../database/db-connector');
 
 // View Customers. 

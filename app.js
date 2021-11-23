@@ -32,7 +32,6 @@ app.use(express.urlencoded({ extended: true }));
 // Database connection.
 var db = require('./database/db-connector');
 
-const homeRoute = require('./server/routes/home');
 const customerRoute = require('./server/routes/customer');
 app.use('/customers', customerRoute);
 
