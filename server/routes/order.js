@@ -13,5 +13,6 @@ router.get('/:id', orderController.delete);
 
 // Edit and Update
 router.get('/editOrder/:id', orderController.edit);
+router.post('/editOrder/:id', orderController.update);
 
 module.exports = router;

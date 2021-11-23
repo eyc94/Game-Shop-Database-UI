@@ -55,3 +55,20 @@ exports.edit = (req, res) => {
         }
     });
 };
+
+exports.update = (req, res) => {
+    const { customerID, orderDate, pickup } = req.body;
+    const updateQuery = `UPDATE orders
+    SET customerID = ?, orderDate = ?, pickup = ?
+    WHERE orderID = ?;`;
+    const inserts = [customerID, orderDate, pickup, req.params.id];
+
+    db.pool.query(updateQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/orders');
+        }
+    });
+};
