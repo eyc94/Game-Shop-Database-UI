@@ -59,3 +59,18 @@ exports.edit = (req, res) => {
         }
     });
 };
+
+exports.update = (req, res) => {
+    const { orderID, productID, quantity } = req.body;
+    const updateQuery = `UPDATE orderDetails SET orderID = ?, productID = ?, quantity = ? WHERE orderID = ? AND productID = ?;`;
+    const inserts = [orderID, productID, quantity, req.params.orderID, req.params.productID];
+    console.log(inserts);
+    db.pool.query(updateQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/orderDetails');
+        }
+    });
+};
