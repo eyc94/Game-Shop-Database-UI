@@ -1,0 +1,44 @@
+<h1>Orders</h1>
+
+<div>
+    <a href="/">Home</a>
+</div>
+
+<h3>Add Order</h3>
+
+{{!-- Form to add orders --}}
+<form action="addOrderForm" method="POST" action="/orders/addOrder">
+    {{> orderForm}}
+</form>
+
+<h3>Existing Orders</h3>
+
+{{!-- Create a table --}}
+<table>
+    {{!-- Table header section --}}
+    <thead>
+        {{!-- First row has the key printed of each object as a header cell. --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+        {{!-- Print the orderID, customerID, orderDate, pickup --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.customerID}}</td>
+            <td>{{this.orderDate}}</td>
+            <td>{{this.pickup}}</td>
+            <td><a href="/orders/editOrders/{{this.orderID}}">Update</a></td>
+            <td><a href="/orders/{{this.orderID}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
