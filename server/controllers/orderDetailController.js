@@ -14,3 +14,17 @@ exports.view = (req, res) => {
         }
     });
 };
+
+exports.create = (req, res) => {
+    const createQuery = `INSERT INTO orderDetails (orderID, productID, quantity) VALUES (?, ?, ?);`;
+    const inserts = [req.body.orderID, req.body.productID, req.body.quantity];
+
+    db.pool.query(createQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/orderDetails');
+        }
+    });
+};
