@@ -44,3 +44,18 @@ exports.delete = (req, res) => {
         }
     });
 };
+
+exports.edit = (req, res) => {
+    const selectQuery = `SELECT * FROM orderDetails WHERE orderID = ? AND productID = ?;`;
+    const inserts = [req.params.orderID, req.params.productID];
+
+    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            const obj = { rows };
+            res.render('editOrderDetail', obj);
+        }
+    });
+};
