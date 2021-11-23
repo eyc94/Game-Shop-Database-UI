@@ -1,0 +1,7 @@
+<h3>Edit Product</h3>
+
+{{#each rows}}
+<form id="editProductForm" method="POST" action="/products/editProduct/{{this.productID}}">
+    {{> productForm}}
+</form>
+{{/each}}
