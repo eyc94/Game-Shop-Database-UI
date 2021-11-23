@@ -63,10 +63,8 @@ exports.edit = (req, res) => {
             console.log(error);
             res.sendStatus(400);
         } else {
-            console.log('hi');
             // If there was no error, we redirect back to root.
             // This will automatically run the SELECT query to view all customers.
-            console.log(rows);
             res.render('editCustomer', { rows });
         }
     });
