@@ -3,3 +3,43 @@
 <div>
     <a href="/">Home</a>
 </div>
+
+<h3>Add Product</h3>
+
+<form id="addProductForm" method="POST" action="/products/addProduct">
+    {{> productForm}}
+</form>
+
+<h3>Existing Products</h3>
+
+{{!-- Create a table --}}
+<table id="productsTable">
+
+    {{!-- Header section --}}
+    <thead>
+        {{!-- The first row has the key printed of each object as a header cell. --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+        {{!-- Print the productID, productName, price, publisher, genre --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.productID}}</td>
+            <td>{{this.productName}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.publisher}}</td>
+            <td>{{this.genre}}</td>
+            <td><a href="/products/editProduct/{{this.productID}}">Update</a></td>
+            <td><a href="/products/{{this.productID}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
