@@ -1,3 +1,4 @@
+const e = require('express');
 const db = require('../../database/db-connector');
 
 exports.view = (req, res) => {
@@ -17,6 +18,22 @@ exports.create = (req, res) => {
         if (error) {
             console.log(error);
             res.sendStatus(400);
+        } else {
+            res.redirect('/products');
+        }
+    });
+};
+
+exports.delete = (req, res) => {
+    let deleteQuery = `DELETE FROM products WHERE productID = ?;`;
+    let inserts = [req.params.id];
+
+    db.pool.query(deleteQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.write(JSON.stringify(error));
+            res.status(400);
+            res.end();
         } else {
             res.redirect('/products');
         }
