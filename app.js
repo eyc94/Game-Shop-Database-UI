@@ -52,6 +52,10 @@ app.use('/orders', orderRoute);
 const reviewRoute = require('./server/routes/review');
 app.use('/reviews', reviewRoute);
 
+// Order Detail route.
+const orderDetailRoute = require('./server/routes/orderDetail');
+app.use('/orderDetails', orderDetailRoute);
+
 // App listener.
 app.listen(PORT, function () {
     console.log("Express started on http://localhost:" + PORT + "; press Ctrl-C to terminate.");
