@@ -29,9 +29,6 @@ app.set('view engine', '.hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Database connection.
-var db = require('./database/db-connector');
-
 // Home route.
 const homeRoute = require('./server/routes/home');
 app.use('/', homeRoute);
