@@ -13,3 +13,17 @@ exports.view = (req, res) => {
         }
     });
 };
+
+exports.create = (req, res) => {
+    const createQuery = `INSERT INTO reviews (customerID, productID, rating, reviewText, dateWritten) VALUES (?, ?, ?, ?, ?);`;
+    const inserts = [req.body.customerID, req.body.productID, req.body.rating, req.body.reviewText, req.body.dateWritten];
+
+    db.pool.query(createQuery, inserts, (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/reviews');
+        }
+    });
+};
