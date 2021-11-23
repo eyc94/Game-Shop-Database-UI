@@ -1,0 +1,43 @@
+<h1>Order Details</h1>
+
+<div>
+    <a href="/">Home</a>
+</div>
+
+<h3>Add Order Detail</h3>
+
+{{!-- Form to add order details --}}
+<form id="addOrderDetailForm" method="POST" action="/orderDetails/addOrderDetail">
+    {{> orderDetailForm}}
+</form>
+
+<h3>Existing Order Details</h3>
+
+{{!-- Create a table --}}
+<table>
+    {{!-- Table header section --}}
+    <thead>
+        {{!-- First row has the key printed of each object as a header cell. --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+        {{!-- Print the orderID, productID, quantity --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.productID}}</td>
+            <td>{{this.quantity}}</td>
+            <td><a href="/orderDetails/editOrderDetail/{{this.orderID}}{{this.productID}}">Update</a></td>
+            <td><a href="/orderDetails/{{this.orderID}}{{this.productID}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
