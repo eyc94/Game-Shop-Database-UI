@@ -1,9 +1,11 @@
+// Import database connector files.
 const db = require('../../database/db-connector');
 
-
+// This handles the read route to view all the order details.
 exports.view = (req, res) => {
+    // SELECT query.
     const selectQuery = `SELECT * FROM orderDetails;`;
-
+    // Call query.
     db.pool.query(selectQuery, (error, rows, fields) => {
         if (error) {
             console.log(error);
@@ -15,10 +17,14 @@ exports.view = (req, res) => {
     });
 };
 
+// This handles the create route to create a new order detail.
 exports.create = (req, res) => {
+    // INSERT query.
     const createQuery = `INSERT INTO orderDetails (orderID, productID, quantity) VALUES (?, ?, ?);`;
+    // Parameters for the query.
+    // Notice that our input from the routes file requires TWO user inputs.
     const inserts = [req.body.orderID, req.body.productID, req.body.quantity];
-
+    // Call query.
     db.pool.query(createQuery, inserts, (error, rows, fields) => {
         if (error) {
             console.log(error);
@@ -29,10 +35,13 @@ exports.create = (req, res) => {
     });
 };
 
+// This handles the delete query to delete an existing order detail.
 exports.delete = (req, res) => {
+    // DELETE query.
     const deleteQuery = `DELETE FROM orderDetails WHERE orderID = ? AND productID = ?;`;
+    // Parameters for the query.
     const inserts = [req.params.orderID, req.params.productID];
-
+    // Call query.
     db.pool.query(deleteQuery, inserts, (error, rows, fields) => {
         if (error) {
             console.log(error);
@@ -45,10 +54,13 @@ exports.delete = (req, res) => {
     });
 };
 
+// This handles the select query to view the details to update an existing order detail.
 exports.edit = (req, res) => {
+    // SELECT query.
     const selectQuery = `SELECT * FROM orderDetails WHERE orderID = ? AND productID = ?;`;
+    // Parameter for query.
     const inserts = [req.params.orderID, req.params.productID];
-
+    // Call query.
     db.pool.query(selectQuery, inserts, (error, rows, fields) => {
         if (error) {
             console.log(error);
@@ -60,11 +72,15 @@ exports.edit = (req, res) => {
     });
 };
 
+// This handles the update query to update the detail of an existing order detail.
 exports.update = (req, res) => {
+    // Destructure parameters from the edit form.
     const { orderID, productID, quantity } = req.body;
+    // UPDATE query.
     const updateQuery = `UPDATE orderDetails SET orderID = ?, productID = ?, quantity = ? WHERE orderID = ? AND productID = ?;`;
+    // Parameters for query.
     const inserts = [orderID, productID, quantity, req.params.orderID, req.params.productID];
-    console.log(inserts);
+    // Call query.
     db.pool.query(updateQuery, inserts, (error, rows, fields) => {
         if (error) {
             console.log(error);
