@@ -1,5 +1,5 @@
-<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
+<div class="container-fluid">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Game Store Database UI</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,66 +14,66 @@
                 <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
             </div>
         </div>
+    </nav>
+
+    <h1>Customers</h1>
+
+    <div>
+        <a href="/">Home</a>
     </div>
-</nav>
 
-<h1>Customers</h1>
+    <h3>Add Customer</h3>
 
-<div>
-    <a href="/">Home</a>
-</div>
+    {{!-- Form to add a new customer --}}
+    {{!-- Insert the form from the partials folder --}}
+    {{!-- Note action attribute is different for each forms --}}
+    <form id="addCustomerForm" method="POST" action="/customers/addCustomer">
+        {{> customerForm}}
+    </form>
 
-<h3>Add Customer</h3>
+    <h3>Search Customer</h3>
 
-{{!-- Form to add a new customer --}}
-{{!-- Insert the form from the partials folder --}}
-{{!-- Note action attribute is different for each forms --}}
-<form id="addCustomerForm" method="POST" action="/customers/addCustomer">
-    {{> customerForm}}
-</form>
+    <form method="POST" action="/customers">
+        <label for="search">First Name: </label>
+        <input id="search" type="search" placeholder="Search" name="search"><br>
+        <button type="submit">Search</button>
+    </form>
 
-<h3>Search Customer</h3>
+    <h3>Existing Customers</h3>
 
-<form method="POST" action="/customers">
-    <label for="search">First Name: </label>
-    <input id="search" type="search" placeholder="Search" name="search"><br>
-    <button type="submit">Search</button>
-</form>
+    {{!-- Create a table --}}
+    <table id="customersTable">
 
-<h3>Existing Customers</h3>
+        {{!-- Header section --}}
+        <thead>
+            {{!-- For just the first row, we print each key of the row object as a header
+            cell so we know what each column means when the page renders --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
 
-{{!-- Create a table --}}
-<table id="customersTable">
+        {{!-- Body section --}}
+        <tbody>
 
-    {{!-- Header section --}}
-    <thead>
-        {{!-- For just the first row, we print each key of the row object as a header
-        cell so we know what each column means when the page renders --}}
-        <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
+            {{!-- For each row, print the customerID, firstName, lastName, email,
+            phoneNumber, address --}}
+            {{#each data}}
+            <tr>
+                <td>{{this.customerID}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.address}}</td>
+                <td><a href="/customers/editCustomer/{{this.customerID}}">Update</a></td>
+                <td><a href="/customers/{{this.customerID}}">Delete</a></td>
+            </tr>
             {{/each}}
-        </tr>
-    </thead>
-
-    {{!-- Body section --}}
-    <tbody>
-
-        {{!-- For each row, print the customerID, firstName, lastName, email,
-        phoneNumber, address --}}
-        {{#each data}}
-        <tr>
-            <td>{{this.customerID}}</td>
-            <td>{{this.firstName}}</td>
-            <td>{{this.lastName}}</td>
-            <td>{{this.email}}</td>
-            <td>{{this.phoneNumber}}</td>
-            <td>{{this.address}}</td>
-            <td><a href="/customers/editCustomer/{{this.customerID}}">Update</a></td>
-            <td><a href="/customers/{{this.customerID}}">Delete</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
