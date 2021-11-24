@@ -1,41 +1,55 @@
-<!-- Customer ID -->
-<div>
-    <label for="customerID">Customer ID: </label>
-    <input type="text" id="customerID" name="customerID" value={{this.customerID}}>
+<div class="row">
+    <!-- Customer ID -->
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="customerID">Customer ID: </label>
+        <input class="form-control form-control-sm" type="text" id="customerID" name="customerID"
+            value={{this.customerID}}>
+    </div>
+
+    <!-- Product ID -->
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="productID">Product ID: </label>
+        <input class="form-control form-control-sm" type="text" id="productID" name="productID"
+            value={{this.productID}}>
+    </div>
+
+    <!-- Rating -->
+    <div class="mb-1 col-sm-2">
+        <label class="form-label" for="rating">Rating:</label>
+        <select class="form-select form-select-sm" name="rating" id="rating" value={{this.rating}}>
+            <option value={{this.rating}}>{{this.rating}}</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
 </div>
 
-<!-- Product ID -->
-<div>
-    <label for="productID">Product ID: </label>
-    <input type="text" id="productID" name="productID" value={{this.productID}}>
-</div>
-
-<!-- Rating -->
-<div>
-    <label for="rating">Rating:</label>
-    <select name="rating" id="rating" value={{this.rating}}>
-        <option value={{this.rating}}>{{this.rating}}</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-    </select>
-</div>
 
 <!-- Review Text -->
-<div>
-    <label for="reviewText"></label>
-    <textarea name="reviewText" id="reviewText" cols="30" rows="10">{{this.reviewText}}</textarea>
+<div class="row">
+    <div class="mb-1 col-sm-5">
+        <label class="form-label" for="reviewText">Review:</label>
+        <textarea class="form-control form-control-sm" name="reviewText" id="reviewText"
+            rows="5">{{this.reviewText}}</textarea>
+    </div>
 </div>
 
 <!-- Date Written -->
-<div>
-    <label for="dateWritten"></label>
-    <input name="dateWritten" id="dateWritten" type="date" value={{this.dateWritten}}>
+<div class="row">
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="dateWritten">Date Written:</label>
+        <input class="form-control form-control-sm" name="dateWritten" id="dateWritten" type="date"
+            value={{this.dateWritten}}>
+    </div>
 </div>
 
+
 <!-- Submit Button -->
-<div>
-    <button type="submit">Submit</button>
+<div class="row">
+    <div class="mb-5">
+        <button class="btn btn-sm btn-outline-secondary" type="submit">Submit</button>
+    </div>
 </div>

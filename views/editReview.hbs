@@ -1,9 +1,31 @@
 {{!-- Form to edit a review --}}
-<h3>Edit Review</h3>
 
-{{!-- Creates a form for each value in rows which is just 1 for the order. --}}
-{{#each rows}}
-<form id="editReviewForm" method="POST" action="/reviews/editReview/{{this.reviewID}}">
-    {{> reviewForm}}
-</form>
-{{/each}}
+<div class="container-fluid">
+    <a class="mb-5 btn btn-outline-secondary btn-sm" href="/reviews">Back</a>
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Game Store Database UI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="./customers">Customers</a>
+                    <a class="nav-item nav-link" href="./products">Products</a>
+                    <a class="nav-item nav-link" href="./orders">Orders</a>
+                    <a class="nav-item nav-link" href="./reviews">Reviews</a>
+                    <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h3>Edit Review</h3>
+
+    {{!-- Creates a form for each value in rows which is just 1 for the order. --}}
+    {{#each rows}}
+    <form id="editReviewForm" method="POST" action="/reviews/editReview/{{this.reviewID}}">
+        {{> reviewForm}}
+    </form>
+    {{/each}}
+</div>
