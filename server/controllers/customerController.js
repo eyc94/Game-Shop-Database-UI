@@ -92,3 +92,26 @@ exports.update = (req, res) => {
         }
     });
 };
+
+// Find Customer.
+exports.find = (req, res) => {
+    // Update query.
+    let selectQuery = `SELECT * FROM customers WHERE firstName LIKE ?;`;
+    // Parameters for the UPDATE query in the correct order.
+    let searchTerm = req.body.search;
+    let inserts = ['%' + searchTerm + '%'];
+
+    // Call the query with the user inputs.
+    db.pool.query(selectQuery, inserts, function (error, rows, fields) {
+        // Check to see if there was an error.
+        if (error) { // If error log error.
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            // Redirect to customers page.
+            const obj = { data: rows };
+            console.log(obj);
+            res.render('customers', obj);
+        }
+    });
+}

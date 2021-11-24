@@ -13,6 +13,13 @@
     {{> customerForm}}
 </form>
 
+<h3>Search Customer</h3>
+
+<form method="POST" action="/customers">
+    <input type="search" placeholder="Search" name="search">
+    <button type="submit">Search</button>
+</form>
+
 <h3>Existing Customers</h3>
 
 {{!-- Create a table --}}

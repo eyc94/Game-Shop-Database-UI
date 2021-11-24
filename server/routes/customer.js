@@ -8,6 +8,9 @@ const customerController = require('../controllers/customerController');
 // View customers.
 router.get('/', customerController.view);
 
+// Search a customer.
+router.post('/', customerController.find);
+
 // Delete a customer.
 router.get('/:id', customerController.delete);
 
