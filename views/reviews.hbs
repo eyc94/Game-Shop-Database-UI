@@ -1,46 +1,64 @@
-<h1>Reviews</h1>
+<div class="container-fluid">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Game Store Database UI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="./customers">Customers</a>
+                    <a class="nav-item nav-link" href="./products">Products</a>
+                    <a class="nav-item nav-link" href="./orders">Orders</a>
+                    <a class="nav-item nav-link" href="./reviews">Reviews</a>
+                    <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<div>
-    <a href="/">Home</a>
-</div>
+    <h1 class="text-center">Reviews</h1>
 
-<h3>Add Review</h3>
+    <h3>Add Review</h3>
 
-{{!-- Form to add reviews --}}
-<form id="addReviewForm" method="POST" action="/reviews/addReview">
-    {{> reviewForm}}
-</form>
+    {{!-- Form to add reviews --}}
+    <form id="addReviewForm" method="POST" action="/reviews/addReview">
+        {{> reviewForm}}
+    </form>
 
-<h3>Existing Reviews</h3>
+    <h3>Existing Reviews</h3>
 
-{{!-- Create a table --}}
-<table>
-    {{!-- Table header section --}}
-    <thead>
-        {{!-- First row has the key printed of each object as a header cell. --}}
-        <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
+    {{!-- Create a table --}}
+    <table id="reviewsTable" class="table table-striped table-hover table-bordered">
+        {{!-- Table header section --}}
+        <thead>
+            {{!-- First row has the key printed of each object as a header cell. --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        {{!-- Table body section --}}
+        <tbody>
+            {{!-- Print the reviewID, customerID, productID, rating, reviewText, dateWritten --}}
+            {{#each data}}
+            <tr>
+                <td>{{this.reviewID}}</td>
+                <td>{{this.customerID}}</td>
+                <td>{{this.productID}}</td>
+                <td>{{this.rating}}</td>
+                <td>{{this.reviewText}}</td>
+                <td>{{this.dateWritten}}</td>
+                <td><a class="btn btn-sm btn-outline-secondary" href="/reviews/editReview/{{this.reviewID}}">Update</a>
+                </td>
+                <td><a class="btn btn-sm btn-outline-secondary" href="/reviews/{{this.reviewID}}">Delete</a></td>
+            </tr>
             {{/each}}
-        </tr>
-    </thead>
-
-    {{!-- Table body section --}}
-    <tbody>
-        {{!-- Print the reviewID, customerID, productID, rating, reviewText, dateWritten --}}
-        {{#each data}}
-        <tr>
-            <td>{{this.reviewID}}</td>
-            <td>{{this.customerID}}</td>
-            <td>{{this.productID}}</td>
-            <td>{{this.rating}}</td>
-            <td>{{this.reviewText}}</td>
-            <td>{{this.dateWritten}}</td>
-            <td><a href="/reviews/editReview/{{this.reviewID}}">Update</a></td>
-            <td><a href="/reviews/{{this.reviewID}}">Delete</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
