@@ -1,46 +1,64 @@
-<h1>Products</h1>
+<div class="container-fluid">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Game Store Database UI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="./customers">Customers</a>
+                    <a class="nav-item nav-link" href="./products">Products</a>
+                    <a class="nav-item nav-link" href="./orders">Orders</a>
+                    <a class="nav-item nav-link" href="./reviews">Reviews</a>
+                    <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<div>
-    <a href="/">Home</a>
-</div>
+    <h1 class="text-center">Products</h1>
 
-<h3>Add Product</h3>
+    <h3>Add Product</h3>
 
-{{!-- Form to add products --}}
-<form id="addProductForm" method="POST" action="/products/addProduct">
-    {{> productForm}}
-</form>
+    {{!-- Form to add products --}}
+    <form id="addProductForm" method="POST" action="/products/addProduct">
+        {{> productForm}}
+    </form>
 
-<h3>Existing Products</h3>
+    <h3>Existing Products</h3>
 
-{{!-- Create a table --}}
-<table id="productsTable">
+    {{!-- Create a table --}}
+    <table id="productsTable" class="table table-striped table-hover table-bordered">
 
-    {{!-- Header section --}}
-    <thead>
-        {{!-- The first row has the key printed of each object as a header cell. --}}
-        <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
+        {{!-- Header section --}}
+        <thead>
+            {{!-- The first row has the key printed of each object as a header cell. --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+            {{!-- Print the productID, productName, price, publisher, genre --}}
+            {{#each data}}
+            <tr>
+                <td>{{this.productID}}</td>
+                <td>{{this.productName}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.publisher}}</td>
+                <td>{{this.genre}}</td>
+                <td><a class="btn btn-sm btn-outline-secondary"
+                        href="/products/editProduct/{{this.productID}}">Update</a></td>
+                <td><a class="btn btn-sm btn-outline-secondary" href="/products/{{this.productID}}">Delete</a></td>
+            </tr>
             {{/each}}
-        </tr>
-    </thead>
-
-    {{!-- Body section --}}
-    <tbody>
-        {{!-- Print the productID, productName, price, publisher, genre --}}
-        {{#each data}}
-        <tr>
-            <td>{{this.productID}}</td>
-            <td>{{this.productName}}</td>
-            <td>{{this.price}}</td>
-            <td>{{this.publisher}}</td>
-            <td>{{this.genre}}</td>
-            <td><a href="/products/editProduct/{{this.productID}}">Update</a></td>
-            <td><a href="/products/{{this.productID}}">Delete</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
