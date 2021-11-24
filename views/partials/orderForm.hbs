@@ -1,26 +1,36 @@
 <!-- Customer ID -->
-<div>
-    <label for="customerID">Customer ID: </label>
-    <input type="text" id="customerID" name="customerID" value={{this.customerID}}>
+<div class="row">
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="customerID">Customer ID: </label>
+        <input class="form-control form-control-sm" type="text" id="customerID" name="customerID"
+            value={{this.customerID}}>
+    </div>
 </div>
 
 <!-- Order Date -->
-<div>
-    <label for="orderDate">Order Date: </label>
-    <input type="date" id="orderDate" name="orderDate" value={{this.orderDate}}>
+<div class="row">
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="orderDate">Order Date: </label>
+        <input class="form-control form-control-sm" type="date" id="orderDate" name="orderDate"
+            value={{this.orderDate}}>
+    </div>
 </div>
 
 <!-- Pickup -->
-<div>
-    <label for="pickup">Pickup/Delivery: </label>
-    <select name="pickup" id="pickup" value={{this.pickup}}>
-        <option value={{this.pickup}}>{{this.pickup}}</option>
-        <option value="1">Pickup</option>
-        <option value="0">Delivery</option>
-    </select>
+<div class="row">
+    <div class="mb-1 col-sm-3">
+        <label class="form-label" for="pickup">Pickup/Delivery: </label>
+        <select class="form-select form-select-sm" name="pickup" id="pickup" value={{this.pickup}}>
+            <option value={{this.pickup}}>{{this.pickup}}</option>
+            <option value="1">Pickup</option>
+            <option value="0">Delivery</option>
+        </select>
+    </div>
 </div>
 
 <!-- Submit Button -->
-<div>
-    <button type="submit">Submit</button>
+<div class="row">
+    <div class="mb-5">
+        <button class="btn btn-sm btn-outline-secondary" type="submit">Submit</button>
+    </div>
 </div>
