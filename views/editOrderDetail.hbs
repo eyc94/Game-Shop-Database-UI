@@ -1,9 +1,32 @@
 {{!-- Form to edit an existing order detail --}}
-<h3>Edit Order Detail</h3>
 
-{{!-- Create a form for each row. In this case, we will have just 1. --}}
-{{#each rows}}
-<form id="editOrderDetailForm" method="POST" action="/orderDetails/editOrderDetail/{{this.orderID}}{{this.productID}}">
-    {{> orderDetailForm}}
-</form>
-{{/each}}
+<div class="container-fluid">
+    <a class="mb-5 btn btn-outline-secondary btn-sm" href="/orderDetails">Back</a>
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Game Store Database UI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="./customers">Customers</a>
+                    <a class="nav-item nav-link" href="./products">Products</a>
+                    <a class="nav-item nav-link" href="./orders">Orders</a>
+                    <a class="nav-item nav-link" href="./reviews">Reviews</a>
+                    <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h3>Edit Order Detail</h3>
+
+    {{!-- Create a form for each row. In this case, we will have just 1. --}}
+    {{#each rows}}
+    <form id="editOrderDetailForm" method="POST"
+        action="/orderDetails/editOrderDetail/{{this.orderID}}{{this.productID}}">
+        {{> orderDetailForm}}
+    </form>
+    {{/each}}
+</div>
