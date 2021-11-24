@@ -1,18 +1,79 @@
-<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Game Store Database UI</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="./customers">Customers</a>
-                <a class="nav-item nav-link" href="./products">Products</a>
-                <a class="nav-item nav-link" href="./orders">Orders</a>
-                <a class="nav-item nav-link" href="./reviews">Reviews</a>
-                <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+<div class="container-fluid">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Game Store Database UI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="./customers">Customers</a>
+                    <a class="nav-item nav-link" href="./products">Products</a>
+                    <a class="nav-item nav-link" href="./orders">Orders</a>
+                    <a class="nav-item nav-link" href="./reviews">Reviews</a>
+                    <a class="nav-item nav-link" href="./orderDetails">Order Details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="text-center">Home</h1>
+
+    <p>This is a web-based database UI. The user has access to the database of a Game Shop. Here, the database holds
+        data pertaining to customers, products, orders, reviews, and order details. The user (assumably the admin/owner)
+        has the capability of performing common database operations on all the data. These common operations are the
+        CRUD operations (CREATE, READ, UPDATE, DELETE). Click the respective links below or above to navigate throughout
+        the application.</p>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text">Information of the customers of the game shop.</p>
+                    <a href="./customers" class="btn btn-outline-secondary">Customers</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">Information of the products the game shop holds.</p>
+                    <a href="./products" class="btn btn-outline-secondary">Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Orders</h5>
+                    <p class="card-text">Information of the orders that are placed in the game shop.</p>
+                    <a href="./orders" class="btn btn-outline-secondary">Orders</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reviews</h5>
+                    <p class="card-text">Information of the reviews the customers placed about products.</p>
+                    <a href="./reviews" class="btn btn-outline-secondary">Reviews</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Order Details</h5>
+                    <p class="card-text">Information about products in a certain order placed.</p>
+                    <a href="./orderDetails" class="btn btn-outline-secondary">Order Details</a>
+                </div>
             </div>
         </div>
     </div>
-</nav>
+</div>
