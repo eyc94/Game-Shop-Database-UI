@@ -2,20 +2,30 @@
     <!-- Order ID -->
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="orderID">Order ID: </label>
-        <input class="form-control form-control-sm" type="text" id="orderID" name="orderID" value={{this.orderID}}>
+        <select class="form-select form-select-sm" name="orderID" id="orderID">
+            <option value={{orderDetailInfo.orderID}}>{{orderDetailInfo.orderID}}</option>
+            {{#each orders}}
+            <option value={{this.orderID}}>{{this.orderID}}</option>
+            {{/each}}
+        </select>
     </div>
 
     <!-- Product ID -->
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="productID">Product ID: </label>
-        <input class="form-control form-control-sm" type="text" id="productID" name="productID"
-            value={{this.productID}}>
+        <select class="form-select form-select-sm" name="productID" id="productID">
+            <option value={{orderDetailInfo.productID}}>{{orderDetailInfo.productID}}</option>
+            {{#each products}}
+            <option value={{this.productID}}>{{this.productID}}</option>
+            {{/each}}
+        </select>
     </div>
 
     <!-- Quantity -->
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="quantity">Quantity: </label>
-        <input class="form-control form-control-sm" type="text" id="quantity" name="quantity" value={{this.quantity}}>
+        <input class="form-control form-control-sm" type="text" id="quantity" name="quantity"
+            value={{orderDetailInfo.quantity}}>
     </div>
 </div>
 
