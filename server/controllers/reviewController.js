@@ -3,12 +3,16 @@ const db = require('../../database/db-connector');
 
 // This handles the read route to view all reviews.
 exports.view = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM reviews;`;
-    // Call query.
-    db.pool.query(selectQuery, (error, rows, fields) => {
-        const obj = { data: rows };
-        res.render('reviews', obj);
+    const customerIDQuery = `SELECT customerID FROM customers;`;
+    db.pool.query(customerIDQuery, (error, identifications, fields) => {
+        const productIDQuery = `SELECT productID FROM products;`;
+        db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
+            const selectQuery = `SELECT * FROM reviews;`;
+            db.pool.query(selectQuery, (error, rows, fields) => {
+                const obj = { data: rows, customers: identifications, products: productIdentifications };
+                res.render('reviews', obj);
+            });
+        });
     });
 };
 
@@ -50,19 +54,25 @@ exports.delete = (req, res) => {
 
 // This handles the edit viewing when we want to edit one review.
 exports.edit = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM reviews WHERE reviewID = ?;`;
-    // Parameter for query.
-    const inserts = [req.params.id];
-    // Call query.
-    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
-        if (error) {
-            console.log(error);
-            res.sendStatus(400);
-        } else {
-            const obj = { rows };
-            res.render('editReview', obj);
-        }
+    const customerIDQuery = `SELECT customerID FROM customers;`;
+    db.pool.query(customerIDQuery, (error, identifications, fields) => {
+        const productIDQuery = `SELECT productID FROM products;`;
+        db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
+            // SELECT query.
+            const selectQuery = `SELECT * FROM reviews WHERE reviewID = ?;`;
+            // Parameter for query.
+            const inserts = [req.params.id];
+            // Call query.
+            db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                } else {
+                    const obj = { data: rows, customers: identifications, products: productIdentifications };
+                    res.render('editReview', { reviewInfo: obj.data[0], customers: identifications, products: productIdentifications });
+                }
+            });
+        });
     });
 };
 

@@ -3,14 +3,13 @@ const db = require('../../database/db-connector');
 
 // This handles read route.
 exports.view = (req, res) => {
-    const customerIDQuery = `SELECT customerID from customers;`;
+    const customerIDQuery = `SELECT customerID FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
         // SELECT query.
         const selectQuery = `SELECT * FROM orders;`;
         // Call query.
         db.pool.query(selectQuery, (error, rows, fields) => {
             const obj = { data: rows, customers: identifications };
-            console.log(obj);
             res.render('orders', obj);
         });
     });
@@ -55,7 +54,7 @@ exports.delete = (req, res) => {
 // This handles the route to lead the user to edit an order.
 exports.edit = (req, res) => {
 
-    const customerIDQuery = `SELECT customerID from customers;`;
+    const customerIDQuery = `SELECT customerID FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
 
         // SELECT query.
