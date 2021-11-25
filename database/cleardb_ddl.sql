@@ -81,32 +81,32 @@ VALUES
 
 INSERT INTO reviews (customerID, productID, rating, reviewText, dateWritten)
 VALUES
-(1, 1, "5", "This game makes me feel like Michael Scarn!", "2020-06-02"),
-(1, 2, "3", "Makes me feel more like a US agent!", "2019-04-21"),
-(1, 6, "5", "I'm Michael, the nascar driver :)", "2021-11-17"),
-(5, 7, "3", "This game needs more work, but I see the potential.", "2021-07-21"),
-(4, 4, "1", "Horrrrrible game!", "2019-05-20"),
-(2, 6, "5", "I love racing games and Forza is by far the best.", "2021-11-04"),
-(3, 3, "3", "I don't know what's going on. The graphics are good though.", "2020-09-30");
+(5, 5, "5", "This game makes me feel like Michael Scarn!", "2020-06-02"),
+(5, 15, "3", "Makes me feel more like a US agent!", "2019-04-21"),
+(5, 55, "5", "I'm Michael, the nascar driver :)", "2021-11-17"),
+(45, 65, "3", "This game needs more work, but I see the potential.", "2021-07-21"),
+(35, 35, "1", "Horrrrrible game!", "2019-05-20"),
+(15, 55, "5", "I love racing games and Forza is by far the best.", "2021-11-04"),
+(25, 25, "3", "I don't know what's going on. The graphics are good though.", "2020-09-30");
 
 INSERT INTO orders (customerID, orderDate, pickup)
 VALUES
-(1, "2019-05-01", "1"),
-(2, "2020-03-29", "0"),
-(3, "2018-02-14", "1"),
-(4, "2012-07-12", "1"),
-(5, "2017-01-01", "1"),
-(1, "2021-06-15", "0");
+(5, "2019-05-01", "1"),
+(15, "2020-03-29", "0"),
+(25, "2018-02-14", "1"),
+(35, "2012-07-12", "1"),
+(45, "2017-01-01", "1"),
+(5, "2021-06-15", "0");
 
 INSERT INTO orderDetails (orderID, productID, quantity)
 VALUES
-(1, 1, 1),
-(1, 2, 2),
-(2, 6, 2),
-(2, 7, 1),
-(3, 3, 2),
-(4, 4, 1),
-(4, 3, 1),
-(5, 7, 2),
-(5, 2, 1),
-(6, 6, 3);
+(5, 5, 1),
+(5, 15, 2),
+(15, 55, 2),
+(15, 65, 1),
+(25, 25, 2),
+(35, 35, 1),
+(35, 25, 1),
+(45, 65, 2),
+(45, 15, 1),
+(55, 55, 3);
