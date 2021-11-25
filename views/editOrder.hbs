@@ -23,7 +23,7 @@
     <h3>Edit Order</h3>
 
     {{!-- Creates a form for each value in rows which is just 1 for the order. --}}
-    <form id="editOrderForm" method="POST" action="/orders/editOrder/{{data.orderID}}">
+    <form id="editOrderForm" method="POST" action="/orders/editOrder/{{orderInfo.orderID}}">
         {{> orderForm}}
     </form>
 </div>
