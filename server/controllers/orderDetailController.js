@@ -3,12 +3,16 @@ const db = require('../../database/db-connector');
 
 // This handles the read route to view all the order details.
 exports.view = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM orderDetails;`;
-    // Call query.
-    db.pool.query(selectQuery, (error, rows, fields) => {
-        const obj = { data: rows };
-        res.render('orderDetails', obj);
+    const orderIDQuery = `SELECT orderID FROM orders;`;
+    db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
+        const productIDQuery = `SELECT productID FROM products;`;
+        db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
+            const selectQuery = `SELECT * FROM orderDetails;`;
+            db.pool.query(selectQuery, (error, rows, fields) => {
+                const obj = { data: rows, orders: orderIdentifications, products: productIdentifications };
+                res.render('orderDetails', obj);
+            });
+        });
     });
 };
 
@@ -51,20 +55,31 @@ exports.delete = (req, res) => {
 
 // This handles the select query to view the details to update an existing order detail.
 exports.edit = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM orderDetails WHERE orderID = ? AND productID = ?;`;
-    // Parameter for query.
-    const inserts = [req.params.orderID, req.params.productID];
-    // Call query.
-    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
-        if (error) {
-            console.log(error);
-            res.sendStatus(400);
-        } else {
-            const obj = { rows };
-            res.render('editOrderDetail', obj);
-        }
+
+    const orderIDQuery = `SELECT orderID FROM orders;`;
+    db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
+        const productIDQuery = `SELECT productID FROM products;`;
+        db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
+            // SELECT query.
+            const selectQuery = `SELECT * FROM orderDetails WHERE orderID = ? AND productID = ?;`;
+            // Parameter for query.
+            const inserts = [req.params.orderID, req.params.productID];
+            // Call query.
+            db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                } else {
+                    const obj = { data: rows, orders: orderIdentifications, products: productIdentifications };
+                    res.render('editOrderDetail', { orderDetailInfo: obj.data[0], orders: orderIdentifications, products: productIdentifications });
+                }
+            });
+        });
     });
+
+
+
+
 };
 
 // This handles the update query to update the detail of an existing order detail.
