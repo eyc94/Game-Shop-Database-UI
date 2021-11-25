@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 // We need to instantiate an express object to interact with the server in our code.
 var app = express();
 // Set a port number at the top so it's easy to change in the future.
-PORT = 20301;
+PORT = process.env.PORT || 20301;
 
 // Parsing middleware.
 // Parse application/x-www-form-urlendcoded.
