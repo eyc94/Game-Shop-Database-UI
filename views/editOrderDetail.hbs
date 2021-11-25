@@ -23,10 +23,8 @@
     <h3>Edit Order Detail</h3>
 
     {{!-- Create a form for each row. In this case, we will have just 1. --}}
-    {{#each rows}}
     <form id="editOrderDetailForm" method="POST"
-        action="/orderDetails/editOrderDetail/{{this.orderID}}{{this.productID}}">
+        action="/orderDetails/editOrderDetail/{{orderDetailInfo.orderID}}{{orderDetailInfo.productID}}">
         {{> orderDetailForm}}
     </form>
-    {{/each}}
 </div>
