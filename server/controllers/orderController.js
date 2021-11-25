@@ -3,12 +3,16 @@ const db = require('../../database/db-connector');
 
 // This handles read route.
 exports.view = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM orders;`;
-    // Call query.
-    db.pool.query(selectQuery, (error, rows, fields) => {
-        const obj = { data: rows };
-        res.render('orders', obj);
+    const customerIDQuery = `SELECT customerID from customers;`;
+    db.pool.query(customerIDQuery, (error, identifications, fields) => {
+        // SELECT query.
+        const selectQuery = `SELECT * FROM orders;`;
+        // Call query.
+        db.pool.query(selectQuery, (error, rows, fields) => {
+            const obj = { data: rows, customers: identifications };
+            console.log(obj);
+            res.render('orders', obj);
+        });
     });
 };
 
@@ -50,19 +54,24 @@ exports.delete = (req, res) => {
 
 // This handles the route to lead the user to edit an order.
 exports.edit = (req, res) => {
-    // SELECT query.
-    const selectQuery = `SELECT * FROM orders WHERE orderID = ?;`;
-    // ID of the order to update.
-    inserts = [req.params.id];
-    // Call query.
-    db.pool.query(selectQuery, inserts, (error, rows, fields) => {
-        if (error) {
-            console.log(error);
-            res.sendStatus(400);
-        } else {
-            const obj = { rows };
-            res.render('editOrder', obj);
-        }
+
+    const customerIDQuery = `SELECT customerID from customers;`;
+    db.pool.query(customerIDQuery, (error, identifications, fields) => {
+
+        // SELECT query.
+        const selectQuery = `SELECT * FROM orders WHERE orderID = ?;`;
+        // ID of the order to update.
+        inserts = [req.params.id];
+        // Call query.
+        db.pool.query(selectQuery, inserts, (error, rows, fields) => {
+            if (error) {
+                console.log(error);
+                res.sendStatus(400);
+            } else {
+                const obj = { data: rows, customers: identifications };
+                res.render('editOrder', { orderInfo: obj.data[0], customers: identifications });
+            }
+        });
     });
 };
 
