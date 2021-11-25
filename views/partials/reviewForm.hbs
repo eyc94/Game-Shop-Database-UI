@@ -2,22 +2,30 @@
     <!-- Customer ID -->
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="customerID">Customer ID: </label>
-        <input class="form-control form-control-sm" type="text" id="customerID" name="customerID"
-            value={{this.customerID}}>
+        <select class="form-select form-select-sm" name="customerID" id="customerID">
+            <option value={{reviewInfo.customerID}}>{{reviewInfo.customerID}}</option>
+            {{#each customers}}
+            <option value={{this.customerID}}>{{this.customerID}}</option>
+            {{/each}}
+        </select>
     </div>
 
     <!-- Product ID -->
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="productID">Product ID: </label>
-        <input class="form-control form-control-sm" type="text" id="productID" name="productID"
-            value={{this.productID}}>
+        <select class="form-select form-select-sm" name="productID" id="productID">
+            <option value={{reviewInfo.productID}}>{{reviewInfo.productID}}</option>
+            {{#each products}}
+            <option value={{this.productID}}>{{this.productID}}</option>
+            {{/each}}
+        </select>
     </div>
 
     <!-- Rating -->
     <div class="mb-1 col-sm-2">
         <label class="form-label" for="rating">Rating:</label>
-        <select class="form-select form-select-sm" name="rating" id="rating" value={{this.rating}}>
-            <option value={{this.rating}}>{{this.rating}}</option>
+        <select class="form-select form-select-sm" name="rating" id="rating" value={{reviewInfo.rating}}>
+            <option value={{reviewInfo.rating}}>{{reviewInfo.rating}}</option>
             <option value="5">5</option>
             <option value="4">4</option>
             <option value="3">3</option>
@@ -27,13 +35,12 @@
     </div>
 </div>
 
-
 <!-- Review Text -->
 <div class="row">
     <div class="mb-1 col-sm-5">
         <label class="form-label" for="reviewText">Review:</label>
         <textarea class="form-control form-control-sm" name="reviewText" id="reviewText"
-            rows="5">{{this.reviewText}}</textarea>
+            rows="5">{{reviewInfo.reviewText}}</textarea>
     </div>
 </div>
 
@@ -42,10 +49,9 @@
     <div class="mb-1 col-sm-3">
         <label class="form-label" for="dateWritten">Date Written:</label>
         <input class="form-control form-control-sm" name="dateWritten" id="dateWritten" type="date"
-            value={{this.dateWritten}}>
+            value={{reviewInfo.dateWritten}}>
     </div>
 </div>
-
 
 <!-- Submit Button -->
 <div class="row">
