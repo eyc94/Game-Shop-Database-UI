@@ -23,9 +23,7 @@
     <h3>Edit Review</h3>
 
     {{!-- Creates a form for each value in rows which is just 1 for the order. --}}
-    {{#each rows}}
-    <form id="editReviewForm" method="POST" action="/reviews/editReview/{{this.reviewID}}">
+    <form id="editReviewForm" method="POST" action="/reviews/editReview/{{reviewInfo.reviewID}}">
         {{> reviewForm}}
     </form>
-    {{/each}}
 </div>
