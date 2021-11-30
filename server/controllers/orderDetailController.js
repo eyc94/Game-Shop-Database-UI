@@ -3,7 +3,7 @@ const db = require('../../database/db-connector');
 
 // This handles the read route to view all the order details.
 exports.view = (req, res) => {
-    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID;`;
+    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID ORDER BY orders.orderID;`;
     db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
         const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
@@ -55,7 +55,7 @@ exports.delete = (req, res) => {
 
 // This handles the select query to view the details to update an existing order detail.
 exports.edit = (req, res) => {
-    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID;`;
+    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID ORDER BY orders.orderID;`;
     db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
         const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
