@@ -3,9 +3,9 @@ const db = require('../../database/db-connector');
 
 // This handles the read route to view all the order details.
 exports.view = (req, res) => {
-    const orderIDQuery = `SELECT orderID FROM orders;`;
+    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID;`;
     db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
-        const productIDQuery = `SELECT productID FROM products;`;
+        const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
             const selectQuery = `SELECT * FROM orderDetails;`;
             db.pool.query(selectQuery, (error, rows, fields) => {
@@ -55,10 +55,9 @@ exports.delete = (req, res) => {
 
 // This handles the select query to view the details to update an existing order detail.
 exports.edit = (req, res) => {
-
-    const orderIDQuery = `SELECT orderID FROM orders;`;
+    const orderIDQuery = `SELECT orders.orderID, customers.firstName, customers.lastName FROM orders INNER JOIN customers ON orders.customerID = customers.customerID;`;
     db.pool.query(orderIDQuery, (error, orderIdentifications, fields) => {
-        const productIDQuery = `SELECT productID FROM products;`;
+        const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
             // SELECT query.
             const selectQuery = `SELECT * FROM orderDetails WHERE orderID = ? AND productID = ?;`;
@@ -76,10 +75,6 @@ exports.edit = (req, res) => {
             });
         });
     });
-
-
-
-
 };
 
 // This handles the update query to update the detail of an existing order detail.
