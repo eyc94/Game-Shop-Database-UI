@@ -25,3 +25,6 @@ This represents data about the reviews of the products in the gameshop. The prop
 The admin has the ability to create an entry for a review, view existing reviews, update an existing review, and delete an existing review.
 
 #### Order Details
+This represents data about the order details. This is a composite entity that handles the Many-To-Many relationship between orders and products. The properties include **Order ID**, **Product ID**, and **Quantity**.
+
+The admin has the ability to create an order entry of an existing order, view existing order details, update an existing order detail, and delete an existing order detail.
