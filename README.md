@@ -10,6 +10,9 @@ This represents data about the customers of the gameshop. The properties of the 
 The admin has the ability to create a new customer, search for an existing customer by first name, view existing customers, update an existing customer, and delete an existing customer.
 
 #### Products
+This represents data about the products of the gameshop. The properties of the products include **Product ID**, **Product Name**, **Price**, **Publisher**, **Genre**.
+
+The admin has the ability to create a new product, view existing products, update information on an existing product, and delete an existing product.
 
 #### Orders
 
