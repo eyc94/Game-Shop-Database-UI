@@ -4,27 +4,27 @@ This is a database UI modeled along the theme of a gameshop. This gameshop holds
 
 ## Entities
 
-#### Customers
+### Customers
 This represents data about the customers of the gameshop. The properties of the customers include **Customer ID**, **First Name**, **Last Name**, **Email**, **Phone Number**, and **Address**.
 
 The admin has the ability to create a new customer, search for an existing customer by first name, view existing customers, update an existing customer, and delete an existing customer.
 
-#### Products
+### Products
 This represents data about the products of the gameshop. The properties of the products include **Product ID**, **Product Name**, **Price**, **Publisher**, **Genre**.
 
 The admin has the ability to create a new product, view existing products, update information on an existing product, and delete an existing product.
 
-#### Orders
+### Orders
 This represents data about the orders of the gameshop. The properties of the orders include **Order ID**, **Customer ID**, **Order Date**, and **Pickup**.
 
 The admin has the ability to create a new order, view existing orders, update existing orders, and delete an existing order.
 
-#### Reviews
+### Reviews
 This represents data about the reviews of the products in the gameshop. The properties of reviews inclue **Review ID**, **Customer ID**, **Product ID**, **Rating**, **Review Text**, and **Date Written**.
 
 The admin has the ability to create an entry for a review, view existing reviews, update an existing review, and delete an existing review.
 
-#### Order Details
+### Order Details
 This represents data about the order details. This is a composite entity that handles the Many-To-Many relationship between orders and products. The properties include **Order ID**, **Product ID**, and **Quantity**.
 
 The admin has the ability to create an order entry of an existing order, view existing order details, update an existing order detail, and delete an existing order detail.
