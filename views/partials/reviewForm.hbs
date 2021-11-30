@@ -5,7 +5,7 @@
         <select class="form-select form-select-sm" name="customerID" id="customerID">
             <option value={{reviewInfo.customerID}}>{{reviewInfo.customerID}}</option>
             {{#each customers}}
-            <option value={{this.customerID}}>{{this.customerID}}</option>
+            <option value={{this.customerID}}>{{this.customerID}} {{this.firstName}} {{this.lastName}}</option>
             {{/each}}
         </select>
     </div>
@@ -16,7 +16,7 @@
         <select class="form-select form-select-sm" name="productID" id="productID">
             <option value={{reviewInfo.productID}}>{{reviewInfo.productID}}</option>
             {{#each products}}
-            <option value={{this.productID}}>{{this.productID}}</option>
+            <option value={{this.productID}}>{{this.productID}} {{this.productName}}</option>
             {{/each}}
         </select>
     </div>

@@ -3,9 +3,9 @@ const db = require('../../database/db-connector');
 
 // This handles the read route to view all reviews.
 exports.view = (req, res) => {
-    const customerIDQuery = `SELECT customerID FROM customers;`;
+    const customerIDQuery = `SELECT customerID, firstName, lastName FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
-        const productIDQuery = `SELECT productID FROM products;`;
+        const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
             const selectQuery = `SELECT * FROM reviews;`;
             db.pool.query(selectQuery, (error, rows, fields) => {
@@ -54,9 +54,9 @@ exports.delete = (req, res) => {
 
 // This handles the edit viewing when we want to edit one review.
 exports.edit = (req, res) => {
-    const customerIDQuery = `SELECT customerID FROM customers;`;
+    const customerIDQuery = `SELECT customerID, firstName, lastName FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
-        const productIDQuery = `SELECT productID FROM products;`;
+        const productIDQuery = `SELECT productID, productName FROM products;`;
         db.pool.query(productIDQuery, (error, productIdentifications, fields) => {
             // SELECT query.
             const selectQuery = `SELECT * FROM reviews WHERE reviewID = ?;`;
