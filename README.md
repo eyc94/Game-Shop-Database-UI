@@ -20,5 +20,8 @@ This represents data about the orders of the gameshop. The properties of the ord
 The admin has the ability to create a new order, view existing orders, update existing orders, and delete an existing order.
 
 #### Reviews
+This represents data about the reviews of the products in the gameshop. The properties of reviews inclue **Review ID**, **Customer ID**, **Product ID**, **Rating**, **Review Text**, and **Date Written**.
+
+The admin has the ability to create an entry for a review, view existing reviews, update an existing review, and delete an existing review.
 
 #### Order Details
