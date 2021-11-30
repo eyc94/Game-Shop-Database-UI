@@ -53,10 +53,8 @@ exports.delete = (req, res) => {
 
 // This handles the route to lead the user to edit an order.
 exports.edit = (req, res) => {
-
-    const customerIDQuery = `SELECT customerID FROM customers;`;
+    const customerIDQuery = `SELECT customerID, firstName, lastName FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
-
         // SELECT query.
         const selectQuery = `SELECT * FROM orders WHERE orderID = ?;`;
         // ID of the order to update.
