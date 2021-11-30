@@ -15,6 +15,9 @@ This represents data about the products of the gameshop. The properties of the p
 The admin has the ability to create a new product, view existing products, update information on an existing product, and delete an existing product.
 
 #### Orders
+This represents data about the orders of the gameshop. The properties of the orders include **Order ID**, **Customer ID**, **Order Date**, and **Pickup**.
+
+The admin has the ability to create a new order, view existing orders, update existing orders, and delete an existing order.
 
 #### Reviews
 
