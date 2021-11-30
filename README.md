@@ -5,6 +5,9 @@ This is a database UI modeled along the theme of a gameshop. This gameshop holds
 ## Entities
 
 #### Customers
+This represents data about the customers of the gameshop. The properties of the customers include **Customer ID**, **First Name**, **Last Name**, **Email**, **Phone Number**, and **Address**.
+
+The admin has the ability to create a new customer, search for an existing customer by first name, view existing customers, update an existing customer, and delete an existing customer.
 
 #### Products
 
