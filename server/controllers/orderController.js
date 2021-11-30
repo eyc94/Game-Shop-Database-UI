@@ -3,7 +3,7 @@ const db = require('../../database/db-connector');
 
 // This handles read route.
 exports.view = (req, res) => {
-    const customerIDQuery = `SELECT customerID FROM customers;`;
+    const customerIDQuery = `SELECT customerID, firstName, lastName FROM customers;`;
     db.pool.query(customerIDQuery, (error, identifications, fields) => {
         // SELECT query.
         const selectQuery = `SELECT * FROM orders;`;
